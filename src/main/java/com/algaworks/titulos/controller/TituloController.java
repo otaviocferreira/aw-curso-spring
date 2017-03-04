@@ -42,7 +42,9 @@ public class TituloController {
 	}
 	
 	@RequestMapping
-	public String pesquisar() {
-		return "pesquisa-titulos";
+	public ModelAndView pesquisar() {
+		ModelAndView mv = new ModelAndView("pesquisa-titulos");
+		mv.addObject("titulos", titulos.findAll());
+		return mv;
 	}
 }
