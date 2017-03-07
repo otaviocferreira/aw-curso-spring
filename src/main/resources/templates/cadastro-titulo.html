@@ -19,6 +19,8 @@
 					<a class="btn btn-link aw-link-panel" href="/titulos">Voltar para pesquisa</a>
 				</div>
 			</div>
+			
+			<input type="hidden" th:field="*{codigo}" />
 
 			<div class="panel-body">
 				<div class="form-group" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
