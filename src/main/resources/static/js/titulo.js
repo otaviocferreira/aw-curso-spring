@@ -19,4 +19,13 @@ $('#confirmacaoExclusao').on('show.bs.modal', function(event) {
 $(function() {
 	$('[rel="tooltip"]').tooltip();
 	$('.js-currency').maskMoney({decimal: ',', thousands: '.', allowZero: true});
+	
+	$('.js-atualizar-status').on('click', function(event) {
+		event.preventDefault();
+		
+		var botao = $(event.currentTarget);
+		var url = botao.attr('href');
+		
+		console.log('url', url);
+	});
 });
