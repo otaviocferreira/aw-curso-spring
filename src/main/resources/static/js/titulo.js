@@ -26,6 +26,22 @@ $(function() {
 		var botao = $(event.currentTarget);
 		var url = botao.attr('href');
 		
-		console.log('url', url);
+		var response = $.ajax({
+			url: url,
+			type: 'PUT'
+		});
+		
+		response.done(function(e) {
+			var codigo = botao.data('codigo');
+			
+			$('[data-role=' + codigo + ']').html('<span class="label label-success">' + e + '</span>');
+			
+			botao.hide();
+		});
+		
+		response.fail(function(e) {
+			console.log(e);
+			alert('Erro ao receber título.');
+		});
 	});
 });
