@@ -88,7 +88,7 @@ public class TituloController {
 	@RequestMapping
 	public ModelAndView pesquisar(@ModelAttribute("filtro") TituloFilter filtro) {
 		ModelAndView mv = new ModelAndView("pesquisa-titulos");
-		mv.addObject("titulos", titulos.findByDescricaoContaining(filtro.getDescricao() == null ? "%" : filtro.getDescricao()));
+		mv.addObject("titulos", cadastroTituloService.filtrar(filtro));
 		return mv;
 	}
 }
