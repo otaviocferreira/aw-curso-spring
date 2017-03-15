@@ -1,5 +1,7 @@
 package com.algaworks.titulos.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.algaworks.titulos.model.StatusTitulo;
 import com.algaworks.titulos.model.Titulo;
 import com.algaworks.titulos.repository.Titulos;
+import com.algaworks.titulos.repository.filter.TituloFilter;
 
 @Service
 public class CadastroTituloService {
@@ -32,5 +35,9 @@ public class CadastroTituloService {
 		titulos.save(titulo);
 		
 		return titulo.getStatus().getDescricao();
+	}
+	
+	public List<Titulo> filtrar(TituloFilter filtro) {
+		return titulos.findByDescricaoContaining(filtro.getDescricao() == null ? "%" : filtro.getDescricao());
 	}
 }
